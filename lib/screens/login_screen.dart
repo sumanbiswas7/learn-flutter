@@ -1,3 +1,4 @@
+import 'package:coolapp/routes/app_routes.dart';
 import 'package:flutter/material.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -6,6 +7,18 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
+
+    final TextEditingController nameController = TextEditingController();
+    final TextEditingController passwordController = TextEditingController();
+
+    void handleLogin(BuildContext context) {
+      final name = nameController.text;
+      final password = passwordController.text;
+
+      if (name == "suman" && password == "123456") {
+        Navigator.pushNamed(context, AppRoutes.homeRoute);
+      }
+    }
 
     return Material(
       color: Colors.white,
@@ -26,12 +39,14 @@ class LoginScreen extends StatelessWidget {
           child: Column(
             children: [
               TextFormField(
+                controller: nameController,
                 decoration: const InputDecoration(
                   hintText: "John doe",
                   label: Text("Enter Name"),
                 ),
               ),
               TextFormField(
+                controller: passwordController,
                 obscureText: true,
                 decoration: const InputDecoration(
                   hintText: "123456",
@@ -42,7 +57,9 @@ class LoginScreen extends StatelessWidget {
                 height: 16.0,
               ),
               ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  handleLogin(context);
+                },
                 style: ButtonStyle(
                     fixedSize:
                         MaterialStateProperty.all(Size(screenWidth, 32.0))),
