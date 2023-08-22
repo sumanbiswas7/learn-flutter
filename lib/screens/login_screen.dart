@@ -1,8 +1,16 @@
+import 'package:coolapp/components/app_buttons.dart';
 import 'package:coolapp/routes/app_routes.dart';
 import 'package:flutter/material.dart';
 
-class LoginScreen extends StatelessWidget {
+class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
+
+  @override
+  State<LoginScreen> createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
+  String nameState = "Suman";
 
   @override
   Widget build(BuildContext context) {
@@ -14,10 +22,12 @@ class LoginScreen extends StatelessWidget {
     void handleLogin(BuildContext context) {
       final name = nameController.text;
       final password = passwordController.text;
+      setState(() {
+        nameState = name;
+      });
 
-      if (name == "suman" && password == "123456") {
-        Navigator.pushNamed(context, AppRoutes.homeRoute);
-      }
+      // if (name == "suman" && password == "123456") {}
+      Navigator.pushNamed(context, AppRoutes.homeRoute);
     }
 
     return Material(
@@ -28,9 +38,9 @@ class LoginScreen extends StatelessWidget {
           fit: BoxFit.cover,
           width: screenWidth * 0.75,
         ),
-        const Text(
-          "Coolapp",
-          style: TextStyle(
+        Text(
+          "Welcome $nameState",
+          style: const TextStyle(
             fontSize: 25,
           ),
         ),
@@ -56,15 +66,7 @@ class LoginScreen extends StatelessWidget {
               const SizedBox(
                 height: 16.0,
               ),
-              ElevatedButton(
-                onPressed: () {
-                  handleLogin(context);
-                },
-                style: ButtonStyle(
-                    fixedSize:
-                        MaterialStateProperty.all(Size(screenWidth, 32.0))),
-                child: const Text("Login"),
-              )
+              const LoginButton()
             ],
           ),
         ),
