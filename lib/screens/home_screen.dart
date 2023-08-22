@@ -1,4 +1,4 @@
-import 'package:coolapp/components/app_drawer.dart';
+import 'package:coolapp/widgets/drawer.dart';
 import 'package:coolapp/components/bottom_navbar.dart';
 import 'package:flutter/material.dart';
 
@@ -13,7 +13,7 @@ class HomeScreen extends StatelessWidget {
       ),
       drawer: const AppDrawer(),
       bottomNavigationBar: const BottomNavigationBarExample(),
-      body: Text("wow"),
+      body: const Text("wow"),
     );
   }
 }

@@ -23,7 +23,7 @@ class MainApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSwatch(
             primarySwatch: Colors.brown,
           )),
-      initialRoute: AppRoutes.loginRoute,
+      initialRoute: AppRoutes.homeRoute,
       routes: AppRoutes.getRoutes(),
     );
   }
