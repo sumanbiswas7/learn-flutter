@@ -1,8 +1,9 @@
-import 'package:coolapp/routes/app_routes.dart';
 import 'package:flutter/material.dart';
 
 class LoginButton extends StatefulWidget {
-  const LoginButton({super.key});
+  final VoidCallback onPressed;
+  final bool tapped;
+  const LoginButton({super.key, required this.onPressed, required this.tapped});
 
   @override
   State<LoginButton> createState() => _LoginButtonState();
@@ -15,13 +16,8 @@ class _LoginButtonState extends State<LoginButton> {
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
 
-    handleButtonTap() async {
-      setState(() {
-        isTapped = !isTapped;
-      });
-      await Future.delayed(const Duration(seconds: 1));
-      // ignore: use_build_context_synchronously
-      Navigator.pushNamed(context, AppRoutes.homeRoute);
+    handleButtonTap() {
+      widget.onPressed();
     }
 
     return InkWell(
@@ -43,7 +39,7 @@ class _LoginButtonState extends State<LoginButton> {
                   color: Colors.white,
                 )
               : const Text(
-                  "Login here",
+                  "Login",
                   style: TextStyle(color: Colors.white),
                 ),
         ),

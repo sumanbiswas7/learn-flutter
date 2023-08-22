@@ -10,25 +10,21 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  String nameState = "Suman";
+  bool tappedState = false;
+  final _formKey = GlobalKey<FormState>();
+
+  _handleLogin() {
+    if (_formKey.currentState!.validate()) {
+      setState(() {
+        tappedState = !tappedState;
+      });
+      Navigator.popAndPushNamed(context, AppRoutes.homeRoute);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
-
-    final TextEditingController nameController = TextEditingController();
-    final TextEditingController passwordController = TextEditingController();
-
-    void handleLogin(BuildContext context) {
-      final name = nameController.text;
-      final password = passwordController.text;
-      setState(() {
-        nameState = name;
-      });
-
-      // if (name == "suman" && password == "123456") {}
-      Navigator.pushNamed(context, AppRoutes.homeRoute);
-    }
 
     return Material(
       color: Colors.white,
@@ -38,36 +34,47 @@ class _LoginScreenState extends State<LoginScreen> {
           fit: BoxFit.cover,
           width: screenWidth * 0.75,
         ),
-        Text(
-          "Welcome $nameState",
-          style: const TextStyle(
+        const Text(
+          "Welcome",
+          style: TextStyle(
             fontSize: 25,
           ),
         ),
         Padding(
           padding: const EdgeInsets.all(16.0),
-          child: Column(
-            children: [
-              TextFormField(
-                controller: nameController,
-                decoration: const InputDecoration(
-                  hintText: "John doe",
-                  label: Text("Enter Name"),
+          child: Form(
+            key: _formKey,
+            child: Column(
+              children: [
+                TextFormField(
+                  validator: (value) {
+                    if (value!.isEmpty) return "Name cannot be empty";
+                    if (value.length <= 3) return "Enter a valid name";
+                    return null;
+                  },
+                  decoration: const InputDecoration(
+                    hintText: "John doe",
+                    label: Text("Enter Name"),
+                  ),
                 ),
-              ),
-              TextFormField(
-                controller: passwordController,
-                obscureText: true,
-                decoration: const InputDecoration(
-                  hintText: "123456",
-                  label: Text("Enter Password"),
+                TextFormField(
+                  validator: (value) {
+                    if (value!.isEmpty) return "Password cannot be empty";
+                    if (value.length <= 4) return "Password length must be > 4";
+                    return null;
+                  },
+                  obscureText: true,
+                  decoration: const InputDecoration(
+                    hintText: "123456",
+                    label: Text("Enter Password"),
+                  ),
                 ),
-              ),
-              const SizedBox(
-                height: 16.0,
-              ),
-              const LoginButton()
-            ],
+                const SizedBox(
+                  height: 16.0,
+                ),
+                LoginButton(onPressed: _handleLogin, tapped: tappedState),
+              ],
+            ),
           ),
         ),
       ]),
