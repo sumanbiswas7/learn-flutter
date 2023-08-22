@@ -9,7 +9,7 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Theme.of(context).primaryColor,
+        title: const Text("Products"),
       ),
       drawer: const AppDrawer(),
       bottomNavigationBar: const BottomNavigationBarExample(),

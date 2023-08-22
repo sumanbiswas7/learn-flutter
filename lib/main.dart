@@ -1,7 +1,7 @@
 import 'package:coolapp/routes/app_routes.dart';
+import 'package:coolapp/themes/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 void main() {
   // Set the status bar color to blue
@@ -17,12 +17,9 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData(
-          fontFamily: GoogleFonts.roboto().fontFamily,
-          primaryColor: Colors.lightGreen,
-          colorScheme: ColorScheme.fromSwatch(
-            primarySwatch: Colors.brown,
-          )),
+      themeMode: ThemeMode.dark,
+      theme: AppThemes.lightTheme(),
+      darkTheme: AppThemes.darkTheme(),
       initialRoute: AppRoutes.homeRoute,
       routes: AppRoutes.getRoutes(),
     );

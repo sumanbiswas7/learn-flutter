@@ -19,11 +19,9 @@ class AppDrawer extends StatelessWidget {
             ),
             accountName: Text(
               "Suman Biswas",
-              style: TextStyle(color: Colors.white),
             ),
             accountEmail: Text(
               "textsumanb@gmail.com",
-              style: TextStyle(color: Colors.white),
             ),
           ),
           ListTile(
