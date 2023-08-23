@@ -6,7 +6,7 @@ import 'package:flutter/services.dart';
 void main() {
   // Set the status bar color to blue
   SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
-    statusBarColor: Colors.blue,
+    statusBarColor: Colors.lime,
   ));
   runApp(const MainApp());
 }
@@ -17,7 +17,7 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      themeMode: ThemeMode.dark,
+      themeMode: ThemeMode.light,
       theme: AppThemes.lightTheme(),
       darkTheme: AppThemes.darkTheme(),
       initialRoute: AppRoutes.homeRoute,

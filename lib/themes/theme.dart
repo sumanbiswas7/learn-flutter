@@ -17,4 +17,9 @@ class AppThemes {
         primarySwatch: Colors.green,
         brightness: Brightness.dark,
       );
+  static materialLightTheme() => ThemeData(
+        useMaterial3: true,
+        colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.lime),
+        fontFamily: GoogleFonts.roboto().fontFamily,
+      );
 }
