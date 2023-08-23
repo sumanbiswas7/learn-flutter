@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import '../models/catalog.dart';
 
 class ItemWidget extends StatelessWidget {
-  final Item item;
+  final Products item;
 
   const ItemWidget({super.key, required this.item});
 
@@ -11,9 +11,9 @@ class ItemWidget extends StatelessWidget {
     return Card(
       child: ListTile(
         onTap: () {},
-        leading: Image.network(item.image),
-        title: Text(item.name),
-        subtitle: Text(item.desc),
+        leading: Image.network(item.image!),
+        title: Text(item.name!),
+        subtitle: Text(item.desc!),
         trailing: Text(
           "\$${item.price}",
           // textScaleFactor: 1.5,

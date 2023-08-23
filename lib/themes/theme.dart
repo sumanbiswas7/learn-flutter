@@ -5,6 +5,11 @@ class AppThemes {
   static lightTheme() => ThemeData(
       primarySwatch: Colors.lime,
       fontFamily: GoogleFonts.roboto().fontFamily,
+      bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+        elevation: 0.0,
+        backgroundColor: Colors.lime,
+        selectedItemColor: Colors.black,
+      ),
       appBarTheme: const AppBarTheme(
           centerTitle: true,
           color: Colors.lime,
@@ -21,5 +26,9 @@ class AppThemes {
         useMaterial3: true,
         colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.lime),
         fontFamily: GoogleFonts.roboto().fontFamily,
+        bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+          backgroundColor: Colors.white,
+          elevation: 0.0,
+        ),
       );
 }
